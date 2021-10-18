@@ -1,7 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System.Media;
+using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace timerV1
 {
@@ -20,11 +21,14 @@ namespace timerV1
         bool stop = true;
 
         int counter = 0;
+        int clicks = 0;
+
+        private MediaPlayer musick = new MediaPlayer();
 
         public MainWindow()
         {
             InitializeComponent();
-            MessageBox.Show("code maker is @haha4un© \rpress spacebar to start / stop");
+            MessageBox.Show("Code maker is @haha4un©");
         }
 
         private void downS_Click(object sender, RoutedEventArgs e)
@@ -54,21 +58,6 @@ namespace timerV1
                 Minute.Text = min.ToString();
             }
         }
-
-        //private void downH_Click(object sender, RoutedEventArgs e)
-        //{
-        //    hour -= 1;
-        //    if (hour < 0)
-        //    {
-        //        hour = 59;
-        //        Hour.Text = hour.ToString();
-        //    }
-        //    else
-        //    {
-        //        Hour.Text = hour.ToString();
-        //    }
-        //}
-
         ///////////////////////////////////////// короче, тут такое один вверх, другой вниз, так сказать делю теру
 
         private void upS_Click(object sender, RoutedEventArgs e)
@@ -98,28 +87,10 @@ namespace timerV1
                 Minute.Text = min.ToString();
             }
         }
-
-        //private void upH_Click(object sender, RoutedEventArgs e)
-        //{
-        //    hour += 1;
-        //    if (hour > 59)
-        //    {
-        //        hour = 0;
-        //        Hour.Text = hour.ToString();
-        //    }
-        //    else
-        //    {
-        //        Hour.Text = hour.ToString();
-        //    }
-        //}
         ////////////////////// проверка на спейс нажатый
 
         private async Task spacerAsync()
         {
-            //time = (hour * 1000 * 60) + (min * 1000 * 60) + (sec * 1000);
-            //hour = 60 * min;
-            //min = 60 * sec;
-
             counter += 1;
             if (counter == 1)
             {
@@ -129,9 +100,21 @@ namespace timerV1
 
                 while (counter == 1 & start == true)
                 {
-                    await Task.Delay(1000);
+                    await Task.Delay(1);
 
+                    if (min <= 0 && sec == 0)
+                    {
+                        start = false;
+                        int i = 0;
+                        while (i != 30 & clicks != 2)
+                        {   
+                            await Task.Delay(1000);
 
+                            SystemSounds.Beep.Play();
+                            i += 1;
+                        }
+                        break;
+                    }
                     sec -= 1;
                     Secund.Text = sec.ToString();
 
@@ -143,22 +126,6 @@ namespace timerV1
 
                         Minute.Text = min.ToString();
                         Secund.Text = sec.ToString();
-                        if (min <= 0)
-                        {
-                            break;
-                        }
-                    }
-                    else if (sec > 59)
-                    {
-                        min += 1;
-                        sec = 0;
-
-                        Minute.Text = min.ToString();
-                        Secund.Text = sec.ToString();
-                        if (min == 0)
-                        {
-                            break;
-                        }
                     }
                 }
             }
@@ -175,9 +142,20 @@ namespace timerV1
 
         private void starterOrStoper(object sender, RoutedEventArgs e)
         {
-            spacerAsync();
-            if ( Keyboard.IsKeyDown(Key.Space))
+            clicks += 1;
+            if (clicks == 1)
             {
+                start = true;
+                spacerAsync();
+            }
+            else if (clicks == 2)
+            {
+                start = false;
+            }
+            else if (clicks == 3)
+            {
+                clicks = 1;
+                start = true;
                 spacerAsync();
             }
         }

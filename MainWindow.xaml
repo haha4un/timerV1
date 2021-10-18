@@ -23,20 +23,16 @@
         </Grid.RowDefinitions>
 
 
-        <!--<Button x:Name="downH" Content="↓" FontSize="40" Width="50" Height="50" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="0" Grid.Row="2" Click="downH_Click"/>-->
         <Button x:Name="downM" Content="↓" FontSize="40" Width="50" Height="50" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="0" Grid.Row="2" Click="downM_Click"/>
         <Button x:Name="downS" Content="↓" FontSize="40" Width="50" Height="50" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="2" Grid.Row="2" Click="downS_Click"/>
 
-        <!--<Button x:Name="upH" Content="↑" FontSize="40" Width="50" Height="50" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="0" Grid.Row="0" Click="upH_Click"/>-->
         <Button x:Name="upM" Content="↑" FontSize="40" Width="50" Height="50" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="0" Grid.Row="0" Click="upM_Click"/>
         <Button x:Name="upS" Content="↑" FontSize="40" Width="50" Height="50" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="2" Grid.Row="0" Click="upS_Click"/>
 
-        <!--<TextBlock x:Name="Hour" Text="0" FontSize="40" Width="50" Height="50" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="0" Grid.Row="1"/>-->
         <TextBlock x:Name="Minute" Text="0" FontSize="40" Width="50" Height="50" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="0" Grid.Row="1"/>
         <TextBlock x:Name="Secund" Text="0" FontSize="40" Width="50" Height="50" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="2" Grid.Row="1"/>
         
         <Button Content="Start/Stop" x:Name="SpaceOK" FontSize="25" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Click="starterOrStoper"/>
-
 
     </Grid>
 
