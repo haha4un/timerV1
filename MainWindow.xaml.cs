@@ -100,7 +100,7 @@ namespace timerV1
 
                 while (counter == 1 & start == true)
                 {
-                    await Task.Delay(1);
+                    await Task.Delay(1000);
 
                     if (min <= 0 && sec == 0)
                     {
